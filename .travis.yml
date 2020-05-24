@@ -3,10 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t izardasa/docker-react:latest .
+  - docker build -t izardasa/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true izardasa/docker-react:latest npm run test
+  - docker run -e CI=true izardasa/docker-react npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
